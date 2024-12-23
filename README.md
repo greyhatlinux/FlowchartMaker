@@ -1,5 +1,32 @@
 # FlowchartMaker
 
-This is a basic implementation of an API server, which facilitates making of flowchart (Directed Graphs) with the following API endopints :
+This project is about designing and implementing a system to manage flowcharts with basic CRUD operations. 
+Each flowchart consists of nodes and edges that form a directed graph. 
+REST APIs are used to implement the following features : 
 
-![](./img/apis.png)
+
+1. *Create Flowchart:* Create a new flowchart with a unique ID, nodes, and edges.
+2. *Fetch Flowchart:* Fetch details of a flowchart by its ID, including its nodes and edges.
+3. *Update Flowchart:* Add or remove nodes and edges in an existing flowchart.
+4. *Delete Flowchart:* Delete an existing flowchart by its ID.
+5. An added endpoint to fetch all outgoing edges for a given node.
+6. *Basic Swagger* documentation for the APIs.
+
+
+Steps to run the app : 
+1. Create a virtual env in python, so you don't mess with your global libraries
+> python3 -m venv .venv
+
+2. Install all the libraries in requirements.txt
+> python3 install -r requirements.txt
+
+3. Start the fastAPI server, with automatic reload flag
+> uvicorn server:app --reload
+
+4. Visit the homepage at 8000 port
+http://localhost:8000
+
+5. Visit the Swagger page for making the HTTP calls
+http://localhost:8000/docs
+
+![](./apis.png)
