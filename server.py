@@ -62,7 +62,6 @@ def create_new_flowchart(name: str, relations: str):
     return JSONResponse(content=response)
 
 
-
 # PATCH - update existing flowchart
 @app.patch("/flowchart/addedge/{id}/{relations}", response_model=Flowchart)
 def update_add_edge_flowchart(id: int, relations: str):
@@ -100,16 +99,17 @@ def update_remove_edge_flowchart(id: int, relations: str):
             return JSONResponse(content=response)
     raise HTTPException(status_code=404, detail=f"Flowchart with id : {id} not found")
 
+
 # Fetch all outgoing edges
 @app.get("/flowchart/{id}/outgoingedge/{edge}")
-def get_all_outgoing_edges(id: int, edge: str, response_model=int):
+def get_all_outgoing_edges(id: int, edge: str):
     if len(edge) > 1:
-        return HTTPException(status_code=400, detail="Provide one node to fetch the outgoing edges")
+        raise HTTPException(status_code=400, detail="Provide one node to fetch the outgoing edges")
     for flowchart in all_flowcharts:
         if flowchart.id == id:
             outgoing_edges = graph.fetch_outgoing_edges(flowchart, edge)
             if outgoing_edges < 0 :
-                return HTTPException(status_code=400, detail=f"Flowchart with id : {id} doesn't have {edge} as a node")
+                raise HTTPException(status_code=400, detail=f"Flowchart with id : {id} doesn't have {edge} as a node")
             response = {
                 'message' : f'Fetched all outgoing edges for Flowchart : {id} for Edge {edge}',
                 'data': outgoing_edges
