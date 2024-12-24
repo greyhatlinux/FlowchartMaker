@@ -39,3 +39,11 @@ http://localhost:8000
 http://localhost:8000/docs
 
 ![](./apis.png)
+
+
+
+## Run the Unit Tests
+
+This runs bunch of unit test for the API endpoints.
+
+> pytest test_server
