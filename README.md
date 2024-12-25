@@ -25,16 +25,19 @@ Reason for choosing FastAPI for the project :
 1. Create a virtual env in python, so you don't mess with your global libraries
 > python3 -m venv .venv
 
-2. Install all the libraries in requirements.txt
+2. Activate the virtual env
+> source ./.venv/bin/activate (different command for Windows)
+
+3. Install all the libraries in requirements.txt
 > python3 install -r requirements.txt
 
-3. Start the fastAPI server, with automatic reload flag
+4. Start the fastAPI server, with automatic reload flag
 > uvicorn server:app --reload
 
-4. Visit the homepage at 8000 port
+5. Visit the homepage at 8000 port
 http://localhost:8000
 
-5. Visit the Swagger page for making the HTTP calls
+6. Visit the Swagger page for making the HTTP calls
 http://localhost:8000/docs
 
 ![](./apis.png)
